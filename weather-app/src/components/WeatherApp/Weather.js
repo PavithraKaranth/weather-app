@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./Weather.css";
 
-export default function WeatherApp() {
+function WeatherApp() {
   const [weather, setWeather] = useState({});
   const [city, setCity] = useState("");
   const [icon, setIcon] = useState(null);
@@ -106,7 +106,7 @@ export default function WeatherApp() {
 </div>
 
         <div className="container__temp">
-          {weather.main ? <h1>{weather.main.temp}°F</h1> : " "}
+          {weather.main ? <h1>Temperature - {weather.main.temp}°F</h1> : " "}
         </div>
       
 <div className="container__wrap">
@@ -114,24 +114,21 @@ export default function WeatherApp() {
           <div className="container__wind-humidity">
             <div className="container__humidity">
               {weather.main ? (
-                <p className="container__data">{weather.main.humidity}%</p>
+                <p className="container__data">Humidity - {weather.main.humidity}%</p>
               ) : (
                 " "
               )}
-              <p>Humidity</p>
             </div>
 
             <div className="container__wind">
               {weather.wind ? (
-                <p className="container__data">{weather.wind.speed} MPH</p>
+                <p className="container__data">Wind Speed - {weather.wind.speed} MPH</p>
               ) : (
                 " "
               )}
-              <p>Wind Speed</p>
             </div>
             <div className="container__icon">
               {icon && <img src={icon} alt="weather" />}
-              <p>Icon</p>
             </div>
           </div>
           
@@ -141,3 +138,4 @@ export default function WeatherApp() {
     </div>
   );
 }
+export default WeatherApp;
